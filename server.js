@@ -11,8 +11,12 @@ const PORT = process.env.PORT || 8080;
 app.use(bodyParser.json());
 
 // Routes
-app.post('/request_otp', requestOTP);
-app.post('/verify_otp', verifyOTP);
+const router = express.Router();
+
+router.post('/request', requestOTP);
+router.post('/verify', verifyOTP);
+
+module.exports = router;
 
 // New endpoint to validate phone numbers
 app.post('/validate_phone', (req, res) => {
