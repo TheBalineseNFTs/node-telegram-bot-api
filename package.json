@@ -1,10 +1,10 @@
 {
-  "name": "my-telegram-bot-app",
+  "name": "tele",
   "version": "1.0.0",
   "description": "Telegram bot for OTP verification",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
