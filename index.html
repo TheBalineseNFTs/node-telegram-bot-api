@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifikasi OTP</title>
+    <link rel="stylesheet" href="./public/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Verifikasi Nomor Telepon</h2>
+        <form id="otpForm">
+            <label for="phone">Nomor Telepon:</label>
+            <input type="text" id="phone" placeholder="Masukkan nomor telepon">
+            <button type="button" onclick="requestOTP()">Kirim OTP</button>
+        </form>
+        <div id="otpSection" style="display:none;">
+            <label for="otp">Masukkan OTP:</label>
+            <input type="text" id="otp" placeholder="Masukkan OTP">
+            <button type="button" onclick="verifyOTP()">Verifikasi</button>
+        </div>
+        <div id="message"></div>
+    </div>
+    <script src="./public/js/script.js"></script>
+</body>
+</html>
