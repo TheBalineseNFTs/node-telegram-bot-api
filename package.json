@@ -2,14 +2,14 @@
   "name": "node-telegram-bot-api",
   "version": "1.0.0",
   "description": "Telegram bot for OTP verification",
-  "main": "server.js",
+  "main": "./server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.17.1",
     "dotenv": "^10.0.0",
-    "node-telegram-bot-api": "^0.49.0",
+    "node-telegram-bot-api": "^0.57.0",
     "body-parser": "^1.19.0"
   }
 }
