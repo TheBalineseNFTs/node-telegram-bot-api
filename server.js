@@ -1,6 +1,7 @@
 // server.js (or main server file)
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const { requestOTP, verifyOTP } = require('./controllers/otpController'); // Adjust the path accordingly
 const { isValidPhoneNumber } = require('./utils/otpUtils'); // Adjust path as necessary
 
@@ -9,14 +10,13 @@ const PORT = process.env.PORT || 8080;
 
 // Middleware
 app.use(bodyParser.json());
+app.use(express.static('public')); // Menyajikan file statis dari folder 'public'
 
 // Routes
 const router = express.Router();
-
 router.post('/request', requestOTP);
 router.post('/verify', verifyOTP);
-
-module.exports = router;
+app.use(router);
 
 // New endpoint to validate phone numbers
 app.post('/validate_phone', (req, res) => {
@@ -29,14 +29,18 @@ app.post('/validate_phone', (req, res) => {
     }
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+// Menyajikan file index.html sebagai beranda
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-
 
 // Tambahkan logika bot Telegram di sini
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
     bot.sendMessage(chatId, "Selamat datang! Kirimkan nomor telepon Anda untuk menerima OTP.");
+});
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
